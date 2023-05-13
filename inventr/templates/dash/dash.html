@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dashboard{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('dash.add_new') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<head>
+    <title>Store Inventory</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Store Inventory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity in Stock</th>
+                <th>Inventory Value</th>
+                <th>Reorder Level</th>
+                <th>Return Time in Days</th>
+                <th>Quantity in Return</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.desc }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.qis }}</td>
+                    <td>{{ item.invtvalue }}</td>
+                    <td>{{ item.reorderlevel }}</td>
+                    <td>{{ item.rtd }}</td>
+                    <td>{{ item.qir }}</td>
+                    <td>{{ item.discont }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}

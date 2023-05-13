@@ -11,9 +11,8 @@ bp = Blueprint('dashboard', __name__)
 @bp.route('/')
 def dashboard():
     db = get_db()
-    data = db.execute(
+    inventory = db.execute(
         'Select *'
         'FROM inventory'
-        'ORDER BY id ASC'
     ).fetchall()
-    return render_template('dash/dash.html', data=data)
+    return render_template('dash/dash.html', inventory=inventory)
