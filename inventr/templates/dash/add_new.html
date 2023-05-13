@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add New{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required><br><br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" required></textarea><br><br>
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" step="0.01" required><br><br>
+    <label for="quantity">Quantity in Stock:</label>
+    <input type="number" name="quantity" id="quantity" required><br><br>
+    <label for="reorder_level">Reorder Level:</label>
+    <input type="number" name="reorder_level" id="reorder_level" required><br><br>
+    <label for="reorder_time">Reorder Time in Days:</label>
+    <input type="number" name="reorder_time" id="reorder_time" step="0.01" required><br><br>
+    <label for="quantity_in_reorder">Quantity in Reorder</label>
+    <input type="number" name="quantity_in_reorder" id="quantity_in_reorder" step="0.01" required><br><br>
+    <input type="submit" value="Add Item">
+  </form>
+{% endblock %}

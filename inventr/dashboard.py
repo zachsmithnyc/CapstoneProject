@@ -24,10 +24,10 @@ def add_new():
         name = request.form['name']
         desc = request.form['description']
         price = request.form['price']
-        qis = request.form['quantity in stock']
-        reorderlevel = request.form['reorder level']
-        rtd = request.form['reorder time']
-        qir = request.form['quantity in reorder']
+        qis = request.form['quantity']
+        reorderlevel = request.form['reorder_level']
+        rtd = request.form['reorder_time']
+        qir = request.form['quantity_in_reorder']
         error = None
         
         if not name:
@@ -43,6 +43,8 @@ def add_new():
                 (name, desc, price, qis, reorderlevel, rtd, qir)
             )
             db.commit()
+            message = 'Item added successfully'
+            flash(message)
             return redirect(url_for('dashboard'))
         
     return render_template('dash/add_new.html')
