@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ item['name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name"
+      value="{{ request.form['name'] or item['name'] }}" required>
+    <label for="description">Description</label>
+    <textarea name="description" id="description">{{ request.form['description'] or item['desc'] }}</textarea>
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price"
+     value="{{ request.form['price'] or item['price'] }}" required>
+    <label for="quantity">Quantity in Stock:</label>
+    <input type="number" name="quantity" id="quantity"
+     value="{{ request.form['quantity'] or item['quantity] }}" required>
+    <label for="reorder_level">Reorder Level:</label>
+    <input type="number" name="reorder_level" id="reorder_level"
+     value="{{ request.form['reorder_level'] or item['reorder_level'] }}" required>
+    <label for="reorder_time">Reorder Time in Days:</label>
+    <input type="number" name="reorder_time" id="reorder_time"
+     value="{{ request.form['reorder_time'] or item['reorder_time'] }}" required>
+    <label for="quantity_in_reorder">Quantity in Reorder</label>
+    <input type="number" name="quantity_in_reorder" id="quantity_in_reorder"
+     value="{{ request.form['quantity_in_reorder'] or item['quantity_in_reorder'] }}" required>
+    <label for="discont">Discontinued?</label>
+    <input type="text" name="discont" id="discont"
+      value="{{ request.form['discont'] or item['discont'] }}">
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('dashboard.delete', id=item['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

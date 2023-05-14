@@ -3,7 +3,7 @@
 {% block header %}
   <h1>{% block title %}Dashboard{% endblock %}</h1>
   {% if g.user %}
-    <a class="action" href="{{ url_for('dashboard.add_new') }}">New</a>
+    <a class="action" href="{{ url_for('dashboard.add_new') }}">Add New</a>
   {% endif %}
 {% endblock %}
 
@@ -40,6 +40,9 @@
                 <th>Reorder Time in Days</th>
                 <th>Quantity in Return</th>
                 <th>Discontinued?</th>
+                {% if g.user %}
+                <th></th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -55,6 +58,9 @@
                     <td>{{ item.rtd }}</td>
                     <td>{{ item.qir }}</td>
                     <td>{{ item.discont }}</td>
+                    {% if g.user %}
+                    <td><a class="action" href="{{ url_for('dashboard.update', id=item['id']) }}">Update</a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
