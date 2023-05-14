@@ -21,13 +21,13 @@ discont TEXT
 );
 
 INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir, discont)
-VALUES ('Item 1', 'Desc 1', 51.00, 25, 29, 13, 50, '');
+VALUES ('Item 1', 'Desc 1', 51.00, 25, 29, 13, 50, 'no');
 
 INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir, discont)
-VALUES ('Item 2', 'Desc 2', 93.00, 132, 231, 4, 50, '');
+VALUES ('Item 2', 'Desc 2', 93.00, 132, 231, 4, 50, 'no');
 
 INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir, discont)
-VALUES ('Item 3', 'Desc 3', 57.00, 151, 114, 11, 150, '');
+VALUES ('Item 3', 'Desc 3', 57.00, 151, 114, 11, 150, 'no');
 
 INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir, discont)
 VALUES ('Item 4', 'Desc 4', 19.00, 186, 158, 6, 50, 'yes');

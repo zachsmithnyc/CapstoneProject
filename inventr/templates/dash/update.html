@@ -16,19 +16,19 @@
      value="{{ request.form['price'] or item['price'] }}" required>
     <label for="quantity">Quantity in Stock:</label>
     <input type="number" name="quantity" id="quantity"
-     value="{{ request.form['quantity'] or item['quantity] }}" required>
-    <label for="reorder_level">Reorder Level:</label>
-    <input type="number" name="reorder_level" id="reorder_level"
-     value="{{ request.form['reorder_level'] or item['reorder_level'] }}" required>
+     value="{{ request.form['quantity'] or item['qis'] }}" required>
+     <label for="reorder_level">Reorder Level:</label>
+     <input type="number" name="reorder_level" id="reorder_level"
+     value="{{ request.form['reorder_level'] or item['reorderlevel'] }}" required>
     <label for="reorder_time">Reorder Time in Days:</label>
     <input type="number" name="reorder_time" id="reorder_time"
-     value="{{ request.form['reorder_time'] or item['reorder_time'] }}" required>
+     value="{{ request.form['reorder_time'] or item['rtd'] }}" required>
     <label for="quantity_in_reorder">Quantity in Reorder</label>
     <input type="number" name="quantity_in_reorder" id="quantity_in_reorder"
-     value="{{ request.form['quantity_in_reorder'] or item['quantity_in_reorder'] }}" required>
+     value="{{ request.form['quantity_in_reorder'] or item['qir'] }}" required>
     <label for="discont">Discontinued?</label>
     <input type="text" name="discont" id="discont"
-      value="{{ request.form['discont'] or item['discont'] }}">
+      value="{{ request.form['discont'] or item['discont'] }}" required> 
     <input type="submit" value="Save">
   </form>
   <hr>

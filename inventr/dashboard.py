@@ -28,6 +28,7 @@ def add_new():
         reorderlevel = request.form['reorder_level']
         rtd = request.form['reorder_time']
         qir = request.form['quantity_in_reorder']
+        discont = request.form['discont']
         error = None
         
         if not name:
@@ -38,9 +39,9 @@ def add_new():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir)'
-                'VALUES (?, ?, ?, ?, ?, ?, ?)',
-                (name, desc, price, qis, reorderlevel, rtd, qir)
+                'INSERT INTO inventory (name, desc, price, qis, reorderlevel, rtd, qir, discont)'
+                'VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                (name, desc, price, qis, reorderlevel, rtd, qir, discont)
             )
             db.commit()
             message = 'Item added successfully'
@@ -75,7 +76,7 @@ def update(id):
         reorderlevel = request.form['reorder_level']
         rtd = request.form['reorder_time']
         qir = request.form['quantity_in_reorder']
-        discont = request.form['discontinued']
+        discont = request.form['discont']
         error = None
 
         if not name:
@@ -88,7 +89,7 @@ def update(id):
             db.execute(
                 'UPDATE inventory SET name = ?, desc = ?, price = ?, qis = ?, reorderlevel = ?, rtd = ?, qir = ?, discont = ?'
                 'WHERE id = ?',
-                (name, desc, price, qis, reorderlevel, rtd, qir, discont)
+                (name, desc, price, qis, reorderlevel, rtd, qir, discont, id)
             )
             db.commit()
             return redirect(url_for('dashboard'))
